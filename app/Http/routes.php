@@ -20,3 +20,7 @@ Route::auth();
 Route::get('/home', 'HomeController@index');
 
 Route::get('/entry', 'EntryController@index');
+Route::post('/entry', 'EntryController@store');
+Route::get('/list', 'EntryController@list');
+
+Route::get('/categories', 'CategoriesController@index');

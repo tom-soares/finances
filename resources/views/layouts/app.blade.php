@@ -61,8 +61,13 @@
                   </ul>
                   <ul class="nav navbar-nav navbar-left">
                       <li>
-                        <a href="/entry"><i class="glyphicon glyphicon-plus-sign"></i></a>
+                        <a href="/entry">New Entry</a>
                       </li>
+                    </ul>
+                    <ul class="nav navbar-nav navbar-left">
+                        <li>
+                            <a href="/list">Listing</a>
+                        </li>
                     </ul>
                       <ul class="nav navbar-nav pull-right">
                           <li class="dropdown">
