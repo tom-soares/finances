@@ -6,6 +6,7 @@ use App\Entry;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
+use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\DB;
 
 class EntryController extends Controller
@@ -24,14 +25,32 @@ class EntryController extends Controller
         return view('entries.index');
     }
 
+    public function validatorCheckBox($checkReceita, $checkDespesa)
+    {
+        if($checkReceita == 'true')
+        {
+            $checkReceita = 1;
+            return $checkReceita;
+        }else
+                $checkDespesa = 2;
+                return $checkDespesa;
+
+    }
+
     public function store(Request $request)
     {
+        var_dump($request->all());
+        $entryReceita = $request->input('receita');
+        $entryDespesa = $request->input('despesa');
+
+        $entryCheck = $this->validatorCheckBox($entryReceita, $entryDespesa);
         $entryValue = $request->input('value');
         $entryname = $request->input('description');
 
+
         DB::table('entries')->insert(
 
-            ['description'=> $entryname, 'value'=> $entryValue ]
+            ['description'=> $entryname, 'value'=> $entryValue, 'id_category'=> $entryCheck]
         );
 
         return redirect('list');
@@ -39,9 +58,21 @@ class EntryController extends Controller
 
     public function list()
     {
-       $entries = $this->entryModel->all();
+       //$entries = $this->entryModel->all();
+        //return view('entries.list', compact('entries'));
 
-        return view('entries.list', compact('entries'));
+        $listagem = DB::table('entries')
+            ->join('categories', 'entries.id_category', '=', 'categories.id_category')
+            ->select('entries.*', 'categories.name')
+            ->get();
+        return view('entries.list', compact('listagem'));
+    }
+
+    public function destroy($id)
+    {
+        $this->entryModel->destroy($id);
+
+        return redirect()->route('entries.list');
     }
 
 }

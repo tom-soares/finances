@@ -29,11 +29,10 @@
                             </div>
                             <div class="col-sm-offset-3 col-sm-6">
                                 <div class="checkbox">
-                                    <label><input type="checkbox" value=""
-                                        >Receita</label>
+                                    <label><input type="checkbox" name="receita" value="true">Receita</label>
                                 </div>
                                 <div class="checkbox">
-                                    <label><input type="checkbox" value="" >Despesa</label>
+                                    <label><input type="checkbox" name="despesa" value="true">Despesa</label>
                                 </div>
                             </div>
 

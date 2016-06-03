@@ -3,18 +3,25 @@
 @section('content')
 
  <div class="container">
-  <h2>Lançamentos</h2>
+  <h2>Releases</h2>
   <table class="table">
    <tr>
     <th>ID</th>
-    <th>Descrição</th>
-    <th>Valor</th>
+    <th>Description</th>
+    <th>Value</th>
+    <th>Entry</th>
+    <th>Action</th>
+
    </tr>
-   @foreach($entries as $entry)
+   @foreach($listagem as $entry)
     <tr>
      <td>{{ $entry->id_entry}}</td>
      <td>{{ $entry->description}}</td>
      <td>{{ $entry->value}}</td>
+     <td>{{ $entry->name }}</td>
+     <td>
+         <input type="button" value="Remove" class="btn btn-danger " onclick="location.href='{{ route('entries.destroy', ['id'=>$entry->id_entry]) }}'">
+     </td>
     </tr>
    @endforeach
   </table>

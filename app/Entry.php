@@ -6,7 +6,11 @@ use Illuminate\Database\Eloquent\Model;
 
 class Entry extends Model
 {
-    protected $fillable = ['description'];
+    protected $fillable = [
+        'description', 'value', 'id_category',
+    ];
+
+    protected $primaryKey = 'id_entry';
 
     protected $casts = [
         'user_id' => 'int',
@@ -16,4 +20,7 @@ class Entry extends Model
     {
         return $this->belongsTo(User::class);
     }
+
+    
+
 }

@@ -21,6 +21,7 @@ Route::get('/home', 'HomeController@index');
 
 Route::get('/entry', 'EntryController@index');
 Route::post('/entry', 'EntryController@store');
-Route::get('/list', 'EntryController@list');
+Route::get('/list', ['as'=>'entries.list', 'uses'=> 'EntryController@list']);
+Route::get('/entry/{id}/destroy', ['as'=>'entries.destroy', 'uses'=>'EntryController@destroy']);
 
 Route::get('/categories', 'CategoriesController@index');
