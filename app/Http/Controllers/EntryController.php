@@ -75,4 +75,31 @@ class EntryController extends Controller
         return redirect()->route('entries.list');
     }
 
+    public function editView($id)
+    {
+      $myentry = Entry::find($id);
+      //var_dump($myentry);
+
+      return view('entries.edit', compact('id','myentry'));
+    }
+
+    public function edit(Request $request)
+    {
+      $entryReceita = $request->input('receita');
+      $entryDespesa = $request->input('despesa');
+
+      $entryCheck = $this->validatorCheckBox($entryReceita, $entryDespesa);
+      $entryValue = $request->input('value');
+      $entryname = $request->input('description');
+      $entryid = $request->input('id_entry');
+
+      $myentry = Entry::find($entryid);
+      $myentry->description = $entryname;
+      $myentry->value = $entryValue;
+      $myentry->id_category = $entryCheck;
+      $myentry->save();
+
+      return redirect()->route('entries.list');
+    }
+
 }

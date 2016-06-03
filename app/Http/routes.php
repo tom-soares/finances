@@ -23,5 +23,7 @@ Route::get('/entry', 'EntryController@index');
 Route::post('/entry', 'EntryController@store');
 Route::get('/list', ['as'=>'entries.list', 'uses'=> 'EntryController@list']);
 Route::get('/entry/{id}/destroy', ['as'=>'entries.destroy', 'uses'=>'EntryController@destroy']);
+Route::get('/entry/{id}/edit', ['as'=>'entries.edit', 'uses'=>'EntryController@editView']);
+Route::post('entry/edit', 'EntryController@edit');
 
 Route::get('/categories', 'CategoriesController@index');

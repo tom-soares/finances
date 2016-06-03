@@ -5,11 +5,12 @@
         <div class="col-sm-offset-2 col-sm-8">
             <div class="panel panel-default">
                 <div class="panel-heading">
-                    New Entry
+                    Edit Entry
                 </div>
 
                 <div class="panel-body">
-                    <form action="/entry" method="POST" class="form-horizontal">
+
+                    <form action="/entry/edit" method="POST" class="form-horizontal">
                         {{ csrf_field() }}
 
                         <!-- Entry Name -->
@@ -17,14 +18,14 @@
                             <label for="task-name" class="col-sm-3 control-label">Entry</label>
 
                             <div class="col-sm-6">
-                                <input type="text" name="description" id="entry-description" class="form-control">
+                                <input value="{{$myentry->description}}" type="text" name="description" id="entry-description" class="form-control">
                             </div>
                         </div>
                             <div class="form-group">
                                 <label for="task-name" class="col-sm-3 control-label">$ Value</label>
 
                                 <div class="col-sm-6">
-                                    <input type="number" name="value" id="entry-value" class="form-control">
+                                    <input value="{{$myentry->value}}" type="number" name="value" id="entry-value" class="form-control">
                                 </div>
                             </div>
                             <div class="col-sm-offset-3 col-sm-6">
@@ -34,6 +35,7 @@
                                 <div class="checkbox">
                                     <label><input type="checkbox" name="despesa" value="true">Outcome</label>
                                 </div>
+                                <input class="hidden" name="id_entry" id="entry-id" value="{{$id}}" />
                             </div>
 
                         <!-- Add Task Button -->

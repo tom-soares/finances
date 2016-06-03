@@ -21,6 +21,7 @@
      <td>{{ $entry->name }}</td>
      <td>
          <input type="button" value="Remove" class="btn btn-danger " onclick="location.href='{{ route('entries.destroy', ['id'=>$entry->id_entry]) }}'">
+         <input type="button" value="Edit" class="btn btn-info " onclick="location.href='{{ route('entries.edit', ['id'=>$entry->id_entry]) }}'">
      </td>
     </tr>
    @endforeach
@@ -28,4 +29,3 @@
  </div>
 
 @endsection
-
